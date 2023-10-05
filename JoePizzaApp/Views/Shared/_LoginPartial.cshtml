@@ -17,10 +17,21 @@
 else
 {
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        <a class="nav-link nav-link-custom" asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a class="nav-link nav-link-custom" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
 }
 </ul>
+
+
+<style>
+    .navbar-brand {
+        color: #126328;
+    }
+
+    .nav-link-custom {
+        color: #126328;
+    }
+</style>

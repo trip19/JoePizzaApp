@@ -1,8 +1,69 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model JoePizzaApp.Models.PizzaViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    /* Add custom CSS for consistent card height */
+    .card {
+        height: 100%;
+    }
+
+    /* Ensure the image and text area sizes are the same */
+    .card-img-top {
+        object-fit: cover;
+        max-height: 200px; /* Adjust this value as needed */
+    }
+
+    .card-body {
+        min-height: 150px; /* Adjust this value as needed */
+    }
+
+    .btn-primary {
+        background-color: #126328; /* Change the background color on hover */
+    }
+
+        /* Add hover effect to the button */
+        .btn-primary:hover {
+            background-color: transparent;
+            border: solid 2px #126328; /* Change the background color on hover */
+            color: #126328;
+        }
+</style>
+
+<h1 style="color: #126328">Pick your Pizza!</h1>
+<br />
+
+<div class="row">
+    @foreach (var pizza in Model.Pizzas)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow">
+                <img src="@pizza.ImageUrl" class="card-img-top" alt="@pizza.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@pizza.Name</h5>
+                    <p class="card-text">@pizza.Description</p>
+                    <p class="card-text">Price: Rs.@pizza.Price</p>
+                    <!-- Add a form to send POST request to AddToCart action -->
+                    <form method="post" action="@Url.Action("AddToCart", "Home")">
+                        <input type="hidden" name="pizzaId" value="@pizza.Id" />
+                        <div class="form-group mb-4">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm btn-block">
+                            @{
+                                var pizzaId = pizza.Id;
+                                var quantity = Model.PizzaQuantities.ContainsKey(pizzaId)
+                                ? Model.PizzaQuantities[pizzaId]
+                                : 0;
+                            }
+
+                            <span>Add to Cart</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
 </div>
