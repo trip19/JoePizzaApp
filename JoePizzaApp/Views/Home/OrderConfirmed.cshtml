@@ -82,7 +82,7 @@
             <h1 class="display-6 confirmation-title">Thank You for Ordering!</h1>
         </div>
 
-        <div class="order-details">
+        <div class="order-details" id="order-details">
             <h2>Review Your order</h2>
             <table class="table table-striped">
                 <thead>
@@ -105,7 +105,7 @@
                     }
                 </tbody>
             </table>
-            <div class="order-total">Total Price: Rs.@Model.OrderDetails.Sum(orderDetail => orderDetail.Price * orderDetail.Quantity)</div>
+            <div class="order-total" id="order-total">Total Price: Rs.@Model.OrderDetails.Sum(orderDetail => orderDetail.Price * orderDetail.Quantity)</div>
         </div>
 
         <p class="confirmation-message">Your order is confirmed and will reach you shortly.</p>
