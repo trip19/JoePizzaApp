@@ -37,6 +37,7 @@
 <div class="row">
     @foreach (var pizza in Model.Pizzas)
     {
+        var pizzaName = pizza.Name;
         <div class="col-md-3 mb-4">
             <div class="card border-0 shadow">
                 <img src="@pizza.ImageUrl" class="card-img-top" alt="@pizza.Name">
@@ -49,17 +50,16 @@
                         <input type="hidden" name="pizzaId" value="@pizza.Id" />
                         <div class="form-group mb-4">
                             <label for="quantity">Quantity:</label>
-                            <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" />
+                            <input type="number" class="form-control" id="@pizzaName" name="quantity" value="1" min="1" />
                         </div>
-                        <button type="submit" class="btn btn-primary btn-sm btn-block">
+                        <button type="submit" class="btn btn-primary btn-sm btn-block" id="@pizzaName">
+                            Add to Cart
                             @{
                                 var pizzaId = pizza.Id;
                                 var quantity = Model.PizzaQuantities.ContainsKey(pizzaId)
                                 ? Model.PizzaQuantities[pizzaId]
                                 : 0;
                             }
-
-                            <span>Add to Cart</span>
                         </button>
                     </form>
                 </div>

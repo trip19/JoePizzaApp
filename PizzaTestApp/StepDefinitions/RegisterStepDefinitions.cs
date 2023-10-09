@@ -32,7 +32,7 @@ namespace PizzaTestApp.StepDefinitions
         public void WhenTheUserEntersTheirRegistrationDetails()
         {
 
-            driver.FindElement(By.Id("Input_Email")).SendKeys("knayak1209@gmail.com");
+            driver.FindElement(By.Id("Input_Email")).SendKeys("knayak12091@gmail.com");
             driver.FindElement(By.Id("Input_Password")).SendKeys("1234Trip*");
             driver.FindElement(By.Id("Input_ConfirmPassword")).SendKeys("1234Trip*");
         }

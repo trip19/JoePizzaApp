@@ -9,7 +9,7 @@
 
 @if (Model.CartItems.Any())
 {
-    <div class="card" style="border-radius: 12px;">
+    <div class="card" id="cart" style="border-radius: 12px;">
         <table class="table table-stiped" style="border-color: transparent">
             <thead>
                 <tr style=" background-color:#126328" class="text-muted">
@@ -24,7 +24,8 @@
             <tbody >
                 @foreach (var cartItem in Model.CartItems)
                 {
-                    <tr>
+                    var pizzaName = cartItem.Pizza.Name;
+                    <tr id="@pizzaName">
                         <td>@cartItem.Pizza.Name</td>
                         <td>@cartItem.Pizza.Description</td>
                         <td>Rs.@cartItem.Pizza.Price</td>
@@ -33,7 +34,7 @@
                         <td>
                             <form method="post" action="@Url.Action("RemoveFromCart", "Home")">
                                 <input type="hidden" name="cartItemId" value="@cartItem.CartItemId" />
-                                <button type="submit" class="btn btn-danger">Remove</button>
+                                <button type="submit" class="btn btn-danger" id="@pizzaName">Remove</button>
                             </form>
                         </td>
                     </tr>

@@ -111,7 +111,7 @@ namespace PizzaPlanet.Controllers
                 // Save changes to persist the updated cart
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Cart");
             }
             catch (Exception ex)
             {
